@@ -9,6 +9,11 @@ Support ns = new Support();
 
 ns.PrintNewBoard();
 
-string[] options = ["X", "2", "3", "4", "5", "6", "7", "8", "O" ];
+string[] options = ["X", "2", "3", "4", "X", "6", "7", "8", "X" ];
 
 ns.UpdateBoard(options);
+
+
+string winner = ns.WinnerCheck(options);
+
+Console.WriteLine(winner);

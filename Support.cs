@@ -79,41 +79,46 @@ namespace Mission4
                 {
                     Console.WriteLine("----------");
                 }
-                }
+            }
 
-        string ub = string.Empty;
-        return ub;
+            string ub = string.Empty;
+            return ub;
         }
 
 
 
         // Contain a method that receives the game board array as input and returns if there 
         // is a winner and who it was
-        public string WinnerCheck(char[][] board)
+        public string WinnerCheck(string[] board)
         {
+
             string sWinner = string.Empty;
+
             // Check the rows & columns for a win
-            for (int i = 0; i < board.Length; i++)
+            for (int i = 0; i < 3; i++)
             {
-                if (board[i][0] == board[i][1] && board[i][1] == board[i][2]) 
+                if (board[i] == board[i + 1] && board[i + 1] == board[i + 2])
                 {
-                    sWinner = $"Player {board[i][0]} wins!";
+                    sWinner = $"Player {board[i]} wins!";
                 }
-                else if (board[0][i] == board[1][i] && board[1][i] == board[2][i])
+                else if (board[i] == board[i + 3] && board[i + 3] == board[i + 6])
                 {
-                    sWinner = $"Player {board[0][i]} wins!";
+                    sWinner = $"Player {board[i]} wins!";
                 }
             }
             // Check the diagonals for a win
-            if (board[0][0] == board[1][1] && board[1][1] == board[2][2])
+
+            if (board[0] == board[4] && board[4] == board[8])
             {
-                sWinner = $"Player {board[0][0]} wins!";
+                sWinner = $"Player {board[0]} wins!";
             }
-            else if (board[0][2] == board[1][1] && board[1][1] == board[2][0])
+            else if (board[2] == board[4] && board[4] == board[6])
             {
-                sWinner = $"Player {board[0][2]} wins!";
+                sWinner = $"Player {board[2]} wins!";
             }
+
             return sWinner;
         }
-    }
+
+    } 
 }
