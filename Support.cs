@@ -31,21 +31,21 @@ namespace Mission4
             // Check the rows & columns for a win
             for (int i = 0; i < board.Length; i++)
             {
-                if (board[i][0] == board[i][1] & board[i][1] == board[i][2]) 
+                if (board[i][0] == board[i][1] && board[i][1] == board[i][2]) 
                 {
                     sWinner = $"Player {board[i][0]} wins!";
                 }
-                else if (board[0][i] == board[1][i] & board[1][i] == board[2][i])
+                else if (board[0][i] == board[1][i] && board[1][i] == board[2][i])
                 {
                     sWinner = $"Player {board[0][i]} wins!";
                 }
             }
             // Check the diagonals for a win
-            if (board[0][0] == board[1][1] & board[1][1] == board[2][2])
+            if (board[0][0] == board[1][1] && board[1][1] == board[2][2])
             {
                 sWinner = $"Player {board[0][0]} wins!";
             }
-            else if (board[0][2] == board[1][1] & board[1][1] == board[2][0])
+            else if (board[0][2] == board[1][1] && board[1][1] == board[2][0])
             {
                 sWinner = $"Player {board[0][2]} wins!";
             }
