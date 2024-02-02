@@ -88,4 +88,3 @@ class Driver
         board[choice] = player;
     }
 }
->>>>>>> Stashed changes
