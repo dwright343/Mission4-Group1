@@ -1,7 +1,6 @@
 
-﻿// Mission 4 // Section 4 Group 1
+// Mission 4 // Section 4 Group 1
 
-﻿
 public class Support
 {
     public static void PrintBoard(char[] board)
