@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,17 +12,80 @@ namespace Mission4
     // The supporting class is named Support
     internal class Support
     {
+        public Support()
+        {
+        }
+
         // Receive the “board” array from the driver class
-        public Support(char[][] board) 
-        { 
+        public Support(char[][] board)
+        {
 
         }
 
         // Contain a method that prints the board based on the information passed to it
-        public void PrintBoard(Array board)
+        public string PrintNewBoard()//char[][] board)
         {
+            int iOption = 0;
+
+            for (int iOuter = 0; iOuter < 3; iOuter++)
+            {
+                for (int iInner = 0; iInner < 3; iInner++)
+                {
+                    Console.Write(++iOption);
+
+                    if (iInner < 2)
+                    {
+                        Console.Write(" | ");
+                    }
+                    else
+                    {
+                        Console.Write("");
+                    }
+                }
+
+                Console.WriteLine("");
+
+                if (iOuter < 2)
+                {
+                    Console.WriteLine("----------");
+                }
+                else
+                {
+                    Console.WriteLine("");
+                }
+            }
+            string sn = string.Empty;
+            return sn;
 
         }
+
+        public string UpdateBoard(string[] board)
+        {
+            for (int i = 0; i < board.Length; i++)
+            {
+                Console.Write(board[i]);
+
+                //2,5,8 represent slots 3,6,9
+                if (i == 2 || i == 5 || i == 8)
+                {
+                    Console.WriteLine("");
+                }
+                else
+                {
+                    Console.Write(" | ");
+                }
+
+                if (i == 2 || i == 5)
+                {
+                    Console.WriteLine("----------");
+                }
+                }
+
+        string ub = string.Empty;
+        return ub;
+        }
+
+
 
         // Contain a method that receives the game board array as input and returns if there 
         // is a winner and who it was
