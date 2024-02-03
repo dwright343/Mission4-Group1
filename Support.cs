@@ -12,15 +12,6 @@ namespace Mission4
     // The supporting class is named Support
     internal class Support
     {
-        public Support()
-        {
-        }
-
-        // Receive the “board” array from the driver class
-        public Support(char[][] board)
-        {
-
-        }
 
         // Contain a method that prints the board based on the information passed to it
         public string PrintNewBoard()
@@ -59,7 +50,7 @@ namespace Mission4
 
         }
 
-        public string UpdateBoard(string[] board)
+        public string UpdateBoard(char[] board)
         {
             for (int i = 0; i < board.Length; i++)
             {
@@ -87,10 +78,10 @@ namespace Mission4
 
         // Contain a method that receives the game board array as input and returns if there 
         // is a winner and who it was
-        public string WinnerCheck(string[] board)
+        public bool WinnerCheck(char[] board)
         {
 
-            string sWinner = string.Empty;
+            bool bWinner = false;
 
             // Check the rows & columns for a win
             for (int i = 0; i < 3; i++)
@@ -98,25 +89,25 @@ namespace Mission4
                 // row checks
                 if (board[i * 3] == board[i * 3 + 1] && board[i * 3 + 1] == board[i * 3 + 2])
                 {
-                    sWinner = $"Player {board[i * 3]} wins!";
+                    bWinner = true; // $"Player {board[i * 3]} wins!";
                 }
                 // column checks
                 else if (board[i] == board[i + 3] && board[i + 3] == board[i + 6])
                 {
-                    sWinner = $"Player {board[i]} wins!";
+                    bWinner = true; // $"Player {board[i]} wins!";
                 }
             }
             // Check the diagonals for a win
 
             if (board[0] == board[4] && board[4] == board[8])
             {
-                sWinner = $"Player {board[0]} wins!";
+                bWinner = true; // $"Player {board[0]} wins!";
             }
             else if (board[2] == board[4] && board[4] == board[6])
             {
-                sWinner = $"Player {board[2]} wins!";
+                bWinner = true; // $"Player {board[2]} wins!";
             }
-            return sWinner;
+            return bWinner;
         }
     }
 }

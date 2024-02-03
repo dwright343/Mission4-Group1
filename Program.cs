@@ -43,26 +43,31 @@ public class Support
 */
 
 
+using Mission4;
+
 class Driver
 {
-    private static char[] board = new char[9];
+    public static char[] board = new char[9];
     private static int turns = 0;
+
 
     static void Main(string[] args)
     {
+        Support sp = new Support();
         PrintWelcomeMessage();
-        Support.PrintNewBoard(board); 
+        sp.PrintNewBoard(); 
         bool isGameRunning = true;
+        board = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
         while (isGameRunning && turns < 9)
         {
-            Support.PrintBoard(board);
             PlayerTurn(turns % 2 == 0 ? 'X' : 'O');
-            isGameRunning = !Support.WinnerCheck(board);
+            isGameRunning = !sp.WinnerCheck(board);
             turns++;
+            sp.UpdateBoard(board);
         }
 
-        Support.PrintBoard(board); // Display final board state
+        sp.UpdateBoard(board); // Display final board state
         if (!isGameRunning) Console.WriteLine($"Player {(turns % 2 == 0 ? 'O' : 'X')} wins!");
         else Console.WriteLine("It's a draw!");
     }
@@ -72,19 +77,25 @@ class Driver
         Console.WriteLine("Welcome to Tic-Tac-Toe!");
     }
 
-
     static void PlayerTurn(char player)
     {
         int choice;
-        bool validMove;
+        bool validMove = false;
         do
         {
             Console.WriteLine($"Player {player}, choose your slot (1-9): ");
-            choice = int.Parse(Console.ReadLine()) - 1; // Adjust for zero-based index
-            validMove = choice >= 0 && choice < 9 && board[choice] >= '1' && board[choice] <= '9';
-            if (!validMove) Console.WriteLine("Invalid move, try again.");
-        } while (!validMove);
-
-        board[choice] = player;
+            string input = (Console.ReadLine()); 
+            
+            if (int.TryParse(input, out choice) && (choice - 1 >= 0 && choice - 1 < 9))
+            {
+                validMove = true;
+            }
+            else
+            {
+                validMove = false;
+                Console.WriteLine("Invalid move, try again.");
+            }
+        } while (!validMove) ;
+        board[choice -1] = player; // Adjust for zero-based index
     }
 }
