@@ -97,7 +97,7 @@ namespace Mission4
             // Check the rows & columns for a win
             for (int i = 0; i < 3; i++)
             {
-                if (board[i] == board[i + 1] && board[i + 1] == board[i + 2])
+                if (board[i * 3] == board[i * 3 + 1] && board[i * 3 + 1] == board[i * 3 + 2])
                 {
                     sWinner = $"Player {board[i]} wins!";
                 }
