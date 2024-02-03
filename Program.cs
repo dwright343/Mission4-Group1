@@ -49,7 +49,7 @@ class Driver
 {
     public static char[] board = new char[9];
     private static int turns = 0;
-
+    public static int[] aUsed = new int[9];
 
     static void Main(string[] args)
     {
@@ -86,16 +86,17 @@ class Driver
             Console.WriteLine($"Player {player}, choose your slot (1-9): ");
             string input = (Console.ReadLine()); 
             
-            if (int.TryParse(input, out choice) && (choice - 1 >= 0 && choice - 1 < 9))
+            if (int.TryParse(input, out choice) && (choice - 1 >= 0 && choice - 1 < 9) && (!aUsed.Contains(choice)) )
             {
                 validMove = true;
+                aUsed[turns] = choice;
             }
             else
             {
                 validMove = false;
                 Console.WriteLine("Invalid move, try again.");
             }
-        } while (!validMove) ;
+        } while (!validMove);
         board[choice -1] = player; // Adjust for zero-based index
     }
 }
