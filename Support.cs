@@ -23,7 +23,7 @@ namespace Mission4
         }
 
         // Contain a method that prints the board based on the information passed to it
-        public string PrintNewBoard()//char[][] board)
+        public string PrintNewBoard()
         {
             int iOption = 0;
 
@@ -85,8 +85,6 @@ namespace Mission4
             return ub;
         }
 
-
-
         // Contain a method that receives the game board array as input and returns if there 
         // is a winner and who it was
         public string WinnerCheck(string[] board)
@@ -97,10 +95,12 @@ namespace Mission4
             // Check the rows & columns for a win
             for (int i = 0; i < 3; i++)
             {
+                // row checks
                 if (board[i * 3] == board[i * 3 + 1] && board[i * 3 + 1] == board[i * 3 + 2])
                 {
-                    sWinner = $"Player {board[i]} wins!";
+                    sWinner = $"Player {board[i * 3]} wins!";
                 }
+                // column checks
                 else if (board[i] == board[i + 3] && board[i + 3] == board[i + 6])
                 {
                     sWinner = $"Player {board[i]} wins!";
@@ -116,9 +116,7 @@ namespace Mission4
             {
                 sWinner = $"Player {board[2]} wins!";
             }
-
             return sWinner;
         }
-
-    } 
+    }
 }
